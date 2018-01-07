@@ -226,7 +226,7 @@ object TreeFoldable extends Foldable[Tree] {
   }
 
   override def foldRight[A, B](as: Tree[A])(z: B)(f: (A, B) => B) = as match {
-    case Leaf(a) => f(z, a)
+    case Leaf(a) => f(a, z)
     case Branch(l, r) => foldRight(r)(foldRight(l)(z)(f))(f)
   }
 }
